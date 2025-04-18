@@ -1,0 +1,1 @@
+export * from '@utils/data-types/emuns/role'

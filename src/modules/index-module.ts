@@ -1,0 +1,6 @@
+export * from '@modules/users/user.module'
+export * from '@modules/auth/auth.module'
+export * from '@modules/surveys/survey.module'
+export * from '@modules/redis/redis.module'
+export * from '@modules/response/response.module'
+export * from '@modules/question/question.module'

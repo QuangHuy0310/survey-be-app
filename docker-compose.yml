@@ -1,0 +1,21 @@
+services:
+  redis:
+    image: redis:alpine
+    container_name: apis-redis
+    networks:
+      - backend
+
+  app:
+    build:
+      context: .
+    container_name: apis-app
+    networks:
+      - backend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+
+networks:
+  backend:
+    driver: bridge
