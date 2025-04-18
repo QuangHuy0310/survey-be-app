@@ -58,9 +58,10 @@ export class AuthController {
     @Get('google/redirect')
     async googleCallback(@Req() req, @Res() res) {
         const user = await this.userService.findByGoogleId(req.user.id);
+        console.log('user:', user);
         const payload = {
             email: user.email,
-            id: user._id,
+            id: user.id,
             role: user.role,
         }
         const response = await this.authService.googleLogin(payload);
