@@ -10,7 +10,7 @@ export class UserService {
     ) { }
 
     async create(data: Partial<User>): Promise<User> {
-        console.log(data)
+         (data)
         const user = await this.userModel.create(data);
         return user;
     }
@@ -28,7 +28,7 @@ export class UserService {
 
     async findByGoogleId(id: string): Promise<User> {
         const user = await this.userModel.findOne({ googleId: id }).exec();
-        console.log(user)
+         (user)
         return user;
     }
 

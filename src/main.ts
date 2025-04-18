@@ -31,6 +31,6 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, options)
   SwaggerModule.setup('docs', app, document)
   await app.listen(configs.port);
-  console.log(`📚 Swagger UI tại: http://localhost:${configs.port}/docs`);
+   (`📚 Swagger UI tại: http://localhost:${configs.port}/docs`);
 }
 bootstrap();

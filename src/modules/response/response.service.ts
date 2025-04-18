@@ -12,7 +12,6 @@ export class ResponseService {
     ) { }
 
     async handleCreate(id: string, dto: InputResponseDto): Promise<any> {
-        console.log('ID:', id);
         const responseData = {
             ...dto,
             userId: id,

@@ -32,10 +32,15 @@ export class AuthService {
     }
 
     async googleLogin(googleUser: any) {
-        return this.generateTokens(googleUser);
+        const payload = {
+            _id: googleUser.id,
+            email: googleUser.email,
+            role: USER_ROLE.USER,
+        }
+        return this.generateTokens(payload);
     }
 
-    private async generateTokens(user: User) {
+    private async generateTokens(user: any) {
         const payload = { sub: user._id, email: user.email, role: user.role };
         return {
             accessToken: this.jwtService.sign(payload),

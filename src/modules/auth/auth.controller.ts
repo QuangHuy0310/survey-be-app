@@ -33,7 +33,6 @@ export class AuthController {
     @UseGuards(LocalAuthGuard)
     @Post('login')
     async login(@Req() req: any, @Body() dto: LoginDto) {
-        console.log('req.user:', req.user);
         const data = await this.authService.login(req.user);
         return {
             ...data,
@@ -58,14 +57,12 @@ export class AuthController {
     @Get('google/redirect')
     async googleCallback(@Req() req, @Res() res) {
         const user = await this.userService.findByGoogleId(req.user.id);
-        console.log('user:', user);
         const payload = {
             email: user.email,
-            id: user.id,
+            id: user._id, 
             role: user.role,
         }
         const response = await this.authService.googleLogin(payload);
-        console.log('response:', response);
         res.redirect(`${configs.front_end_url}/oauth-success?token=${response.accessToken}`);
     }
 }
