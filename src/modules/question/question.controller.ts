@@ -11,7 +11,7 @@ export class QuestionController {
         private readonly questionService: QuestionService,
     ) { }
 
-    @GuardRole(USER_ROLE.MANAGER)
+    @GuardRole(USER_ROLE.MANAGER,USER_ROLE.USER)
     @Post('new-question')
     async newQuestion(@Body() dto: QuestionDto) {
         return this.questionService.create(dto)
