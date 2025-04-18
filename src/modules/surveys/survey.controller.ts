@@ -10,11 +10,13 @@ import { USER_ROLE } from '@utils/data-types/emuns';
 export class SurveyController {
     constructor(private readonly surveyService: SurveyService) { }
 
+    @GuardRole(USER_ROLE.MANAGER)
     @Post('new-survey')
     async newSurvey(@Body() dto: ResponseDto) {
         return this.surveyService.create(dto)
     }
 
+    @GuardRole(USER_ROLE.MANAGER, USER_ROLE.USER)
     @ApiQuery({ name: 'page', required: false })
     @ApiQuery({ name: 'limit', required: false })
     @Get('get-survey')
@@ -22,13 +24,15 @@ export class SurveyController {
         return this.surveyService.getSurvey(dto)
     }
 
+    @GuardRole(USER_ROLE.MANAGER)
     @Patch(':id')
     async updateSurvey(@Param('id') id: string, @Body() body: ResponseDto) {
         return this.surveyService.updateSurvey(id, body);
     }
 
-    @Delete('remove:id')
-    async removeSurvey(@Param() id: string) {
+    @GuardRole(USER_ROLE.MANAGER)
+    @Delete('remove')
+    async removeSurvey(@Query('id') id: string) {
         return this.surveyService.remove(id)
     }
 

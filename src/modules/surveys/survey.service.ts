@@ -45,7 +45,7 @@ export class SurveyService {
     }
     
     async remove(id: string):Promise<void>{
-        const dele = await this.surveyModel.findByIdAndUpdate(id,{
+        const softDele = await this.surveyModel.findByIdAndUpdate(id,{
             deletedAt: new Date()
         })
     }

@@ -11,11 +11,13 @@ export class QuestionController {
         private readonly questionService: QuestionService,
     ) { }
 
+    @GuardRole(USER_ROLE.MANAGER)
     @Post('new-question')
     async newQuestion(@Body() dto: QuestionDto) {
         return this.questionService.create(dto)
     }
-    
+
+    @GuardRole(USER_ROLE.MANAGER, USER_ROLE.USER)
     @Get('get-question')
     async getQuestion(@Query('surveyId') surveyId: string) {
         return this.questionService.getQuestion(surveyId)

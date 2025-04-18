@@ -26,6 +26,7 @@ import { RolesGuard } from '@guard/roles.guard';
   providers: [
     JwtStrategy,
     JwtAuthGuard,
+    RolesGuard
   ],
 })
 export class AppModule { }

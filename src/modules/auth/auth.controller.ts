@@ -10,6 +10,7 @@ import { Public } from '@utils/decorators/public.decorator';
 import { GoogleAuthGuard } from '@guard/google-auth.guard';
 import { GuardRole } from '@utils/decorators/guard-role.decorator';
 import { UserService } from '@modules/users/user.service';
+import { configs } from '@utils/config/config';
 
 @ApiTags('AUTHENTICATION')
 
@@ -64,6 +65,6 @@ export class AuthController {
         }
         const response = await this.authService.googleLogin(payload);
         console.log('response:', response);
-        res.redirect(`http://localhost:3002/oauth-success?token=${response.accessToken}`);
+        res.redirect(`${configs.front_end_url}/oauth-success?token=${response.accessToken}`);
     }
 }

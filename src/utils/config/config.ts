@@ -14,5 +14,7 @@ export const configs = {
 
     redis: process.env.REDIS_URL,
 
-    redis_ttl : process.env.REDIS_TTL
+    redis_ttl : process.env.REDIS_TTL,
+
+    front_end_url: process.env.FRONTEND_URL,
 }

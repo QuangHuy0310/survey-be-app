@@ -7,6 +7,11 @@ https://docs.nestjs.com/modules
 
 import { Module } from '@nestjs/common';
 import { Question, QuestionSchema } from '@entities/question.entities';
+import { LocalStrategy } from '@strategies/local-auth.strategy';
+import { JwtStrategy } from '@strategies/jwt.auth.strategy';
+import { GoogleStrategy } from '@strategies/google.strategy';
+import { JwtAuthGuard } from '@guard/jwt-auth.guard';
+import { RolesGuard } from '@guard/roles.guard';
 
 @Module({
     imports: [
@@ -17,6 +22,7 @@ import { Question, QuestionSchema } from '@entities/question.entities';
     controllers: [
         QuestionController,],
     providers: [
-        QuestionService,],
+        QuestionService,
+    ],
 })
 export class QuestionModule { }
